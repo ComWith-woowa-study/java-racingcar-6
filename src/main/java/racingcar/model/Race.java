@@ -20,9 +20,8 @@ public class Race {
     }
 
     private List<RacingCar> makeRacingCar(List<String> carList) {
-        String[] cars = carList.toArray(new String[0]);
         List<RacingCar> racingCar = new ArrayList<>();
-        for (String car : cars) {
+        for (String car : carList) {
             racingCar.add(new RacingCar(car));
         }
         return racingCar;
