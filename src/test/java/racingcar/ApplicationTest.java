@@ -23,6 +23,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 테스트 통과
     @Test
     void 이름에_대한_예외_처리() {
         assertSimpleTest(() ->
