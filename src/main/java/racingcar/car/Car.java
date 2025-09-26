@@ -1,6 +1,6 @@
 package racingcar.car;
 
-// 자동차 객체
+// 자동차 클래스
 public class Car {
 
     private final String name;

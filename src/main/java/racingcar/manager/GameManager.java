@@ -9,7 +9,6 @@ import racingcar.view.OutputView;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 // 게임 진행자 클래스
 public class GameManager {
@@ -23,15 +22,12 @@ public class GameManager {
     private int rounds;
 
     public void start() {
-        // 1) 입력
         List<String> names = InputView.readCars();
         int roundsInput = InputView.readRounds();
 
-        // 2) 검증/정규화는 Player에게
         Player player = Player.of(names, roundsInput);
         this.rounds = player.getRounds();
 
-        // 3) Car 생성 + 출력용 맵 초기화
         for (String n : player.getCars()) {
             cars.add(new Car(n));
             position.put(n, 0);
@@ -61,10 +57,11 @@ public class GameManager {
 
     // 한 번의 이동(모든 차에 대해 전진 여부 판단 및 이동)
     private void progressOnce() {
-        for (Map.Entry<String, Integer> e : position.entrySet()) {
+        for (Car car : cars) {
             if (isMoved()) {
-                e.setValue(e.getValue() + 1);
+                car.go();
             }
+            position.put(car.getName(), car.getPosition());
         }
     }
 
