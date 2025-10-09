@@ -6,12 +6,16 @@ import java.util.List;
 
 public class OutputView {
 
-    public static void printGameRecord(RacingCar car) {
+    public void printExecutionResults() {
+        System.out.println("\n실행 결과");
+    }
+
+    public void printGameRecord(RacingCar car) {
         String printBar = car.getName() + " : " + "-".repeat(car.getMoveCount());
         System.out.println(printBar);
     }
 
-    public static void printWinners(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    public void printWinners(List<String> winners) {
+        System.out.println("\n최종 우승자 : " + String.join(", ", winners));
     }
 }
