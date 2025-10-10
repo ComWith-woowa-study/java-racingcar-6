@@ -18,4 +18,8 @@ public class OutputView {
     public void printWinners(List<String> winners) {
         System.out.println("\n최종 우승자 : " + String.join(", ", winners));
     }
+
+    public void printError(String errorMessage) {
+        System.out.println("[ERROR] " + errorMessage);
+    }
 }

@@ -17,9 +17,15 @@ public class GameManager {
     }
 
     public void playGame() {
-        racingGame.registerCars(inputView.inputRacingCar());
-        int tryCount = inputView.inputTryCount();
+        try {
+            racingGame.registerCars(inputView.inputRacingCar());
+            runRound(inputView.inputTryCount());
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+        }
+    }
 
+    private void runRound(int tryCount) {
         outputView.printExecutionResults();
         for (int i = 0; i < tryCount; i++) {
             playOneRound();
