@@ -1,6 +1,5 @@
-package racingcar.car;
+package racingcar.model;
 
-// 자동차 클래스
 public class Car {
 
     private final String name;
@@ -11,7 +10,6 @@ public class Car {
         this.position = 0;
     }
 
-    // 전진
     public void go() {
         this.position++;
     }
@@ -23,5 +21,4 @@ public class Car {
     public int getPosition() {
         return position;
     }
-
 }
