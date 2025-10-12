@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.controller.GameManager;
-import racingcar.domain.factory.CarRegistrar;
+import racingcar.domain.car.CarRegistrar;
 import racingcar.domain.game.GameEngine;
 import racingcar.domain.game.Referee;
 import racingcar.domain.game.generator.NumberGenerator;

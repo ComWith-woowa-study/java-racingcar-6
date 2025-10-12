@@ -1,7 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.car.RacingCar;
-import racingcar.domain.factory.CarRegistrar;
+import racingcar.domain.car.CarRegistrar;
 import racingcar.domain.game.GameEngine;
 import racingcar.domain.game.Referee;
 
