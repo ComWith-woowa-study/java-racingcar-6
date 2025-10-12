@@ -1,44 +1,26 @@
 package racingcar;
 
-import racingcar.domain.factory.CarRegistrar;
-import racingcar.domain.car.RacingCar;
+import racingcar.controller.GameManager;
+import racingcar.domain.car.CarRegistrar;
 import racingcar.domain.game.GameEngine;
 import racingcar.domain.game.Referee;
 import racingcar.domain.game.generator.NumberGenerator;
 import racingcar.domain.game.generator.RandomNumberGenerator;
+import racingcar.service.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Application {
     public static void main(String[] args) {
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         CarRegistrar carRegistrar = new CarRegistrar();
         NumberGenerator generator = new RandomNumberGenerator();
         GameEngine gameEngine = new GameEngine(generator);
         Referee referee = new Referee();
+        RacingGame racingGame = new RacingGame(carRegistrar, gameEngine, referee);
+        GameManager gameManager = new GameManager(inputView, outputView, racingGame);
 
-        List<RacingCar> carList = new ArrayList<>();
-
-        String[] registrationList = InputView.inputRacingCar();
-
-        for (String car : registrationList) {
-            RacingCar racingCar = carRegistrar.registerCar(car);
-            carList.add(racingCar);
-        }
-
-        int tryCount = InputView.inputTryCount();
-
-        System.out.println("\n실행 결과");
-        for (int i = 0; i < tryCount; i++) {
-            for (RacingCar car : carList) {
-                gameEngine.playTurn(car);
-                OutputView.printGameRecord(car);
-            }
-            System.out.println();
-        }
-
-        OutputView.printWinners(referee.judge(carList));
+        gameManager.playGame();
     }
 }
